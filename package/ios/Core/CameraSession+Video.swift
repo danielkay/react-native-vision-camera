@@ -16,6 +16,7 @@ extension CameraSession {
    */
   func startRecording(options: RecordVideoOptions,
                       onVideoRecorded: @escaping (_ video: Video) -> Void,
+                      onStart: @escaping () -> Void,
                       onError: @escaping (_ error: CameraError) -> Void) {
     // Run on Camera Queue
     CameraQueues.cameraQueue.async {
@@ -95,12 +96,6 @@ extension CameraSession {
 
       ReactLogger.log(level: .info, message: "File path: \(tempFilePath)")
       let tempURL = URL(string: "file://\(tempFilePath)")!
-
-      let onStart = {
-        if let onRecordingStart = self.onRecordingStart {
-          onRecordingStart([:])
-        }
-      }
 
       let recordingSession: RecordingSession
       do {

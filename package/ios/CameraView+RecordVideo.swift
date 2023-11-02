@@ -17,6 +17,11 @@ extension CameraView: AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAud
 
     do {
       let options = try RecordVideoOptions(fromJSValue: options)
+      let onStart = {
+        if let onRecordingStart = self.onRecordingStart {
+          onRecordingStart([:])
+        }
+      }
 
       // Start Recording with success and error callbacks
       cameraSession.startRecording(
@@ -24,6 +29,7 @@ extension CameraView: AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAud
         onVideoRecorded: { video in
           callback.resolve(video.toJSValue())
         },
+        onStart: onStart,
         onError: { error in
           callback.reject(error: error)
         }

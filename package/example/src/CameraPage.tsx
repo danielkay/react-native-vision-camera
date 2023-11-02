@@ -102,6 +102,9 @@ export function CameraPage({ navigation }: Props): React.ReactElement {
     console.log('Camera initialized!')
     setIsCameraInitialized(true)
   }, [])
+  const onRecordingStart = useCallback(() => {
+    console.log('Recording started!')
+  }, [])
   const onMediaCaptured = useCallback(
     (media: PhotoFile | VideoFile, type: 'photo' | 'video') => {
       console.log(`Media captured! ${JSON.stringify(media)}`)
@@ -186,6 +189,7 @@ export function CameraPage({ navigation }: Props): React.ReactElement {
                 lowLightBoost={device.supportsLowLightBoost && enableNightMode}
                 isActive={isActive}
                 onInitialized={onInitialized}
+                onRecordingStart={onRecordingStart}
                 onError={onError}
                 enableZoomGesture={false}
                 animatedProps={cameraAnimatedProps}

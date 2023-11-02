@@ -5,10 +5,10 @@ import { PermissionsPage } from './PermissionsPage'
 import { MediaPage } from './MediaPage'
 import { CameraPage } from './CameraPage'
 import type { Routes } from './Routes'
-import { Camera, CameraPermissionStatus } from 'react-native-vision-camera'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { StyleSheet } from 'react-native'
 import { DevicesPage } from './DevicesPage'
+import { Camera, CameraPermissionStatus } from 'react-native-vision-camera'
 
 const Stack = createNativeStackNavigator<Routes>()
 
