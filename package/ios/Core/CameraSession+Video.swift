@@ -96,11 +96,18 @@ extension CameraSession {
       ReactLogger.log(level: .info, message: "File path: \(tempFilePath)")
       let tempURL = URL(string: "file://\(tempFilePath)")!
 
+      let onStart = {
+        if let onRecordingStart = self.onRecordingStart {
+          onRecordingStart([:])
+        }
+      }
+
       let recordingSession: RecordingSession
       do {
         recordingSession = try RecordingSession(url: tempURL,
                                                 fileType: options.fileType,
-                                                completion: onFinish)
+                                                completion: onFinish,
+                                                onStart: onStart)
       } catch let error as NSError {
         onError(.capture(.createRecorderError(message: error.description)))
         return

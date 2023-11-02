@@ -81,6 +81,7 @@ export class Camera extends React.PureComponent<CameraProps> {
     super(props)
     this.onViewReady = this.onViewReady.bind(this)
     this.onInitialized = this.onInitialized.bind(this)
+    this.onRecordingStart = this.onRecordingStart.bind(this)
     this.onError = this.onError.bind(this)
     this.onCodeScanned = this.onCodeScanned.bind(this)
     this.ref = React.createRef<RefType>()
@@ -392,6 +393,10 @@ export class Camera extends React.PureComponent<CameraProps> {
   private onInitialized(): void {
     this.props.onInitialized?.()
   }
+
+  private onRecordingStart(): void {
+    this.props.onRecordingStart?.()
+  }
   //#endregion
 
   private onCodeScanned(event: NativeSyntheticEvent<OnCodeScannedEvent>): void {
@@ -454,6 +459,7 @@ export class Camera extends React.PureComponent<CameraProps> {
         ref={this.ref}
         onViewReady={this.onViewReady}
         onInitialized={this.onInitialized}
+        onRecordingStart={this.onRecordingStart}
         onCodeScanned={this.onCodeScanned}
         onError={this.onError}
         codeScannerOptions={codeScanner}

@@ -263,5 +263,9 @@ export interface CameraProps extends ViewProps {
    * return <Camera {...props} codeScanner={codeScanner} />
    */
   codeScanner?: CodeScanner
+  /**
+   * Called when recording actually starts
+   */
+  onRecordingStart?: () => void
   //#endregion
 }

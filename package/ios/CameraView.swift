@@ -58,6 +58,7 @@ public final class CameraView: UIView, CameraSessionDelegate {
   @objc var onInitialized: RCTDirectEventBlock?
   @objc var onError: RCTDirectEventBlock?
   @objc var onViewReady: RCTDirectEventBlock?
+  @objc var onRecordingStart: RCTDirectEventBlock?
   @objc var onCodeScanned: RCTDirectEventBlock?
   // zoom
   @objc var enableZoomGesture = false {
